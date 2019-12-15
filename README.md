@@ -71,5 +71,6 @@ Preview Link: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6
 
 As you can see the user does not have to write anything, just select the last option and get the result
 
-
+Also every time the user enters a name, it will be added to a file named log.txt
   
+![Image of Liri-bot app](https://github.com/sjosevich/liriBot/blob/master/images/Capture3.PNG)
