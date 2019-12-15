@@ -30,6 +30,9 @@ this is loaded
   spotify-this-song
   movie-this
   do-what-it-says
+
+![Image of Liri-bot app](https://github.com/sjosevich/liriBot/tree/master/images/Capture1.png)
+  
   
 If the user selects concert-this then, he will have to write the name of a musical artist, that is to say a singer and automatically he will be able to observe the places where this artist will have his next concerts. 
 
