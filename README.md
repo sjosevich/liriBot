@@ -49,6 +49,8 @@ Venue Name: The Fillmore
 Venue Location: Miami Beach
 Date of the Event: 12/17/2019  
 
+![Image of Liri-bot app](https://github.com/sjosevich/liriBot/blob/master/images/Capture2.PNG)
+
 If the user forgets to write the name of the artist, the app will ask him to write the name of one before showing any results.
 
 The application will behave in the same way with the following two options, "spotify-this-song", "movie-this", where the user will have to write his favorite music or his favorite movie
