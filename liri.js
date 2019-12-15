@@ -116,6 +116,14 @@ function concertThis(value) {
                     "\nDate of the Event: " + datetime
             console.log(concertResults);
         }
+
+        fs.appendFile("log.txt", `\nArtist Name: ${value}`, function(err){
+            if (err){
+                console.log(err);
+            }else{
+                console.log(`Artist Name ${value} added to log.txt file!` )
+            }
+        })
     })
     .catch(function (error) {
         console.log(error);
@@ -139,6 +147,14 @@ function spotifyThisSong(value) {
                     
             console.log(spotifyResults);
         }
+
+        fs.appendFile("log.txt", `\nSong Name: ${value}`, function(err){
+            if (err){
+                console.log(err);
+            }else{
+                console.log(`Song Name ${value} added to log.txt file!` )
+            }
+        })
     })
     .catch(function(err) {
         console.log(err);
@@ -160,6 +176,13 @@ function movieThis(value) {
                     "\nPlot: " + response.data.Plot +
                     "\nActors/Actresses: " + response.data.Actors;
             console.log(movieResults);
+            fs.appendFile("log.txt", `\nMovie Name: ${value}`, function(err){
+                if (err){
+                    console.log(err);
+                }else{
+                    console.log(`Movie Name ${value} added to log.txt file!` )
+                }
+            })    
     })
     .catch(function (error) {
         console.log(error);
