@@ -12,8 +12,7 @@ In order to carry out this task, I had to use several technologies among which w
     NodeJS
     JavaScript
     Spotify API
-    Bands In Town API
-    OMDB API
+    npm Axios to grab data from the OMDB API and the Bands In Town API
     NPM spotify-web-api-node
     NPM dotenv
     NPM request
