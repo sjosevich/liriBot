@@ -39,7 +39,66 @@ inquirer
         
         
     })
+   }else if(res.choice === "spotify-this-song"){
+    inquirer
+    .prompt([
+       {  type: "input",
+          message: "Select a track",
+          name: "track"
+       },
+    ])
+    .then(function(track_result){
+        var track = track_result.track;
+       // console.log(artist)
+        
+        if (track == ""){
+            console.log("Please select a track")
+        }else{
+           
+            spotifyThisSong(track )
+        }
+        
+        
+    })
+   }else if(res.choice === "movie-this"){
+    inquirer
+    .prompt([
+       {  type: "input",
+          message: "Select a Movie",
+          name: "movie"
+       },
+    ])
+    .then(function(movie_result){
+        var movie = movie_result.movie;
+       
+        
+        if (movie == ""){
+            console.log("Please select a movie")
+        }else{
+           
+            movieThis(movie)
+        }
+        
+        
+    })
+   }else if(res.choice === "do-what-it-says"){
+    inquirer
+    .prompt([
+       {  type: "input",
+          message: "Get songs from random file",
+          name: "doThis"
+       },
+    ])
+    .then(function(doThis){
+        var fromFile = doThis.doThis;
+        
+          readTrackFromFile(fromFile)
+      
+        
+        
+    })
    }
+
 });
 
 function concertThis(value) {
@@ -51,7 +110,7 @@ function concertThis(value) {
            
 
             var concertResults = 
-                "--------------------------------------------------------------------" +
+                "=====================================================================" +
                     "\nVenue Name: " + response.data[i].venue.name + 
                     "\nVenue Location: " + response.data[i].venue.city +
                     "\nDate of the Event: " + datetime
@@ -63,4 +122,58 @@ function concertThis(value) {
     });
         
 
+}
+
+function spotifyThisSong(value) {
+  
+    spotify
+    .search({ type: 'track', query: value })
+    .then(function(response) {
+        for (var i = 0; i < 5; i++) {
+            var spotifyResults = 
+                "=========================================================================" +
+                    "\nArtist(s): " + response.tracks.items[i].artists[0].name + 
+                    "\nSong Name: " + response.tracks.items[i].name +
+                    "\nAlbum Name: " + response.tracks.items[i].album.name +
+                    "\nPreview Link: " + response.tracks.items[i].preview_url;
+                    
+            console.log(spotifyResults);
+        }
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+}
+
+function movieThis(value) {
+  
+    axios.get("https://www.omdbapi.com/?t=" + value + "&y=&plot=short&apikey=trilogy")
+    .then(function(response) {
+            var movieResults = 
+                "--------------------------------------------------------------------" +
+                    "\nMovie Title: " + response.data.Title + 
+                    "\nYear of Release: " + response.data.Year +
+                    "\nIMDB Rating: " + response.data.imdbRating +
+                    "\nRotten Tomatoes Rating: " + response.data.Ratings[1].Value +
+                    "\nCountry Produced: " + response.data.Country +
+                    "\nLanguage: " + response.data.Language +
+                    "\nPlot: " + response.data.Plot +
+                    "\nActors/Actresses: " + response.data.Actors;
+            console.log(movieResults);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+    
+}
+
+function readTrackFromFile(fromFile) {
+    
+    fs.readFile("random.txt", "utf8", function(error, data) {
+        if (error) {
+            return console.log(error);
+        }
+        var dataArr = data.split(',');
+        spotifyThisSong(dataArr[1]);
+    })
 }
